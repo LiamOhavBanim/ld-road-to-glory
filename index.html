@@ -545,12 +545,23 @@ const EX={
   ]
 };
 
-let workouts=JSON.parse(localStorage.getItem('ld3_w')||'[]');
+let workouts;
+
+try {
+  const saved = localStorage.getItem('ld3_w');
+  workouts = saved ? JSON.parse(saved) : [];
+} catch (e) {
+  workouts = [];
+}
 let cDay='push';
 let cDate='';
 let openInfoName=null;
 
-function save(){try{localStorage.setItem('ld3_w',JSON.stringify(workouts))}catch(e){}}
+function save(){
+  try {
+    localStorage.setItem('ld3_w', JSON.stringify(workouts));
+  } catch (e) {}
+}
 
 function showScreen(name,btn){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -920,6 +931,11 @@ function renderQuote(){
 }
 
 renderStreak();renderQuote();renderRecent();
+  window.addEventListener('beforeunload', save);
+window.addEventListener('pagehide', save);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') save();
+});
 </script>
 </body>
 </html>

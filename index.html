@@ -1,16 +1,3 @@
-// ONE-TIME RESET (להסיר אחרי שזה עובד!)
-if (localStorage.getItem("RESET_DONE") !== "true") {
-  localStorage.clear();
-  sessionStorage.clear();
-
-  localStorage.setItem("RESET_DONE", "true");
-
-  location.reload();
-}
-
-
-
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -529,6 +516,16 @@ body::after{
 <div class="toast" id="toast"></div>
 
 <script>
+  // ONE-TIME RESET (להסיר אחרי שזה עובד!)
+if (localStorage.getItem("RESET_DONE") !== "true") {
+  localStorage.clear();
+  sessionStorage.clear();
+
+  localStorage.setItem("RESET_DONE", "true");
+
+  location.reload();
+}
+
 const EX={
   push:[
     {name:"Bench Press",sets:3,pu:false,info:{d:"לחיצת חזה בשכיבה — תרגיל מלך לפיתוח שרירי החזה, כתפיים קדמיות וטריצפס. בסיס לבניית מסה ועוצמה.",t:["שכמות מוצמדות ומורדות לאורך כל התנועה","כפות רגליים שטוחות על הרצפה","אחיזה מעט מעבר לרוחב כתפיים","נשום פנימה בירידה, החוצה בדחיפה"],tc:"הורד מוט לאמצע החזה. מרפקים ב-45°. עלה בנשיפה חזקה."}},
